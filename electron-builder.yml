@@ -1,0 +1,22 @@
+appId: com.example.youtube-puppeteer
+productName: YoutubePuppeteerDesktop
+files:
+  - ".next/**"
+  - "node_modules/**"
+  - "package.json"
+  - "electron/**"
+directories:
+  buildResources: build
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+
+linux:
+  target:
+    - AppImage
+    - deb
+  maintainer: "you@example.com"
+  category: Utility

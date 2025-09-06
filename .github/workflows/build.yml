@@ -33,3 +33,9 @@ jobs:
         run: npm run build
         env:
           CI: true
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-${{ matrix.os }}
+          path: dist/**

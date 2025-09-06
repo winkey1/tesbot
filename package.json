@@ -1,17 +1,27 @@
 {
-  "name": "tes",
+  "name": "FB_automation",
   "version": "0.1.0",
   "private": true,
+  "main": "electron/main.js",
+  "author": "stuz",
+  "description": "FB_automation",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "concurrently \"next dev -p 3000\" \"electron .\"",
+    "build:next": "next build",
+    "start:next": "next start -p 3000",
+    "build": "npm run build:next && electron-builder --config electron-builder.yml",
+    "start": "electron .",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:generate": "prisma generate",
+    "prisma:seed": "node prisma/seed.js"
   },
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.2"
+    "next": "15.5.2",
+    "@prisma/client": "^6.15.0",
+    "prisma": "^6.15.0",
+    "puppeteer": "^24.19.0"
   },
   "devDependencies": {
     "typescript": "^5",
